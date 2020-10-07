@@ -1,7 +1,4 @@
-import React, {
-  useState,
-  useEffect
-} from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
 const App = () => {
@@ -15,8 +12,8 @@ const App = () => {
   useEffect(() => {
     console.log("useEffectが走りました。");
     fetch(
-        `https://api.unsplash.com/search/photos?query=${query}&client_id=${process.env.REACT_APP_CLIENT_ID}`
-      )
+      `https://api.unsplash.com/search/photos?query=${query}&client_id=${process.env.REACT_APP_CLIENT_ID}`
+    )
       /**
        * ①responseオブジェクトが帰ってきてそのresponseのjsonを抽出
        * ②dataが帰ってくる
@@ -39,50 +36,30 @@ const App = () => {
     console.log("onSubmitが呼ばれました。");
   };
 
-  return ( <
-    div className = "App" >
-    <
-    div className = "main" >
-    <
-    form onSubmit = {
-      onSubmit
-    } >
-    <
-    input type = "text"
-    onChange = {
-      (e) => setText(e.target.value)
-    } //inputの入力された値が追加
-    value = {
-      text
-    } //初期値は空
-    /> <
-    button type = "submit" > Search < /button> <
-    /form> <
-    /div> <
-    div className = "container" > {
-      images.map((image) => ( <
-        div key = {
-          image.id
-        }
-        className = "card" >
-        <
-        img src = {
-          image.urls.regular
-        }
-        className = "card-img"
-        alt = "" / >
-        <
-        div className = "card-content" >
-        <
-        h1 className = "card-title" > {
-          image.alt_description
-        } < /h1> <
-        /div> <
-        /div>
-      ))
-    } <
-    /div> <
-    /div>
+  return (
+    <div className="App">
+      <div className="main">
+        <form onSubmit={onSubmit}>
+          <input
+            type="text"
+            onChange={(e) => setText(e.target.value)} //inputの入力された値が追加
+            value={text} //初期値は空
+          />{" "}
+          <button type="submit"> Search </button>{" "}
+        </form>{" "}
+      </div>{" "}
+      <div className="container">
+        {" "}
+        {images.map((image) => (
+          <div key={image.id} className="card">
+            <img src={image.urls.regular} className="card-img" alt="" />
+            <div className="card-content">
+              <h1 className="card-title"> {image.alt_description} </h1>{" "}
+            </div>{" "}
+          </div>
+        ))}{" "}
+      </div>{" "}
+    </div>
   );
 };
 
