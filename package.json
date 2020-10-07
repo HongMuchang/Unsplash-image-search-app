@@ -1,5 +1,5 @@
 {
-  "name": "Image search app",
+  "name": "imagesearch",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
